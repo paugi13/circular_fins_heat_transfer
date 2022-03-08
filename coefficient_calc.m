@@ -12,14 +12,14 @@ bp = zeros(n+1, 1);
 
 delta_r = (Rext-Rint)/n;
 
-r_ac = 0;
+rP = 0;
 for i=2:(n+1)
     
    %Now rP is modified to build the next node's coefficients.
-   rP = r_ac + delta_r;
+   rP = rP + delta_r;
    
    rw = rP - delta_r/2;
-   re = rP - delta_r/2;
+   re = rP + delta_r/2;
    Sw = 2*pi*rw*ef;
    Se = 2*pi*re*ef;
    Ap = 2*pi*(re^2-rw^2);
