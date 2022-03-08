@@ -1,4 +1,4 @@
-function [ap,ae, aw, bp] = coefficient_calc(Rext,Rint,lambda,n)
+function [ap,ae, aw, bp] = coefficient_calc(Rext,Rint,lambda,n, ef, alpha_ext, Text)
 % Function to calculate all the coefficients through the fin.
 % They are returned in vector format.
 

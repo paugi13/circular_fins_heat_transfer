@@ -22,7 +22,7 @@ delta = 10^-6;
 Tinic = 500;
 
 %% Calculating coefficients ([W/K])
-[ap,ae, aw, bp] = coefficient_calc(Rext,Rint,lambda,n);
+[ap,ae, aw, bp] = coefficient_calc(Rext,Rint,lambda,n, ef, alpha_ext, Text);
 
 %% Initiation
 T = zeros(n+1,1);
@@ -30,11 +30,11 @@ T = zeros(n+1,1);
 for i =1:(n+1)
     T(i) = Tinic;    
 end
-
+T(1) = Twall;
 boolean = 0;
 while boolean == 0
-    [T, Taux] = temp_field_calc(ap,ae, aw, bp, T);
-    [error] = error_calc(T, Taux);
+    [T, Taux] = temp_field_calc(ap,ae, aw, bp, T, n);
+    [error] = error_calc(T, Taux, n);
     if max(error) < delta
         boolean = 1;
     end
