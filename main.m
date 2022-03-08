@@ -22,7 +22,7 @@ delta = 10^-6;
 Tinic = 500;
 
 %% Calculating coefficients ([W/K])
-[ap,ae, aw, bp] = coefficient_calc(Rext,Rint,lambda,n, ef, alpha_ext, Text);
+[ap,ae, aw, bp] = coefficient_calc(Rext,Rint,lambda,n, ef, alpha_ext, Text, alpha_end);
 
 %% Initiation
 T = zeros(n+1,1);

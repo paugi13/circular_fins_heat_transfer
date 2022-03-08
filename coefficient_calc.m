@@ -1,4 +1,4 @@
-function [ap,ae, aw, bp] = coefficient_calc(Rext,Rint,lambda,n, ef, alpha_ext, Text)
+function [ap,ae, aw, bp] = coefficient_calc(Rext,Rint,lambda,n, ef, alpha_ext, Text, alpha_end)
 % Function to calculate all the coefficients through the fin.
 % They are returned in vector format.
 
@@ -33,6 +33,8 @@ for i=2:(n+1)
    
    if i == (n+1)
        ae(i)=0;
+       Ap = 2*pi*(rP^2-rw^2);
+       bp(i)= alpha_ext*Text*Ap + alpha_end*Text*2*pi*ef*Rext;
    end
 end
 end
