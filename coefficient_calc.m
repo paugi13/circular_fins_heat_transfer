@@ -38,7 +38,14 @@ for i=2:(n+1)
        bp(i)= alpha_ext*Text*Ap + alpha_end*Text*2*pi*ef*Rext;
    end
 end
-
+       re = delta_r/2;
+       Se = 2*pi*re*ef;
+       Ap = 2*pi*(re^2);
+%        ae(1)=lambda*Se/dpe;
+%        aw(1)=0;
+%        ap(1) = (lambda*Se/dpe) + alpha_ext*Ap;
+%        bp(1) = alpha_ext*Text*Ap;
+       
        ae(1)=0;
        aw(1)=0;
        ap(1) = 1;

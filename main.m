@@ -24,24 +24,11 @@ Tinic = 700;
 
 %% Calculating coefficients ([W/K])
 [ap,ae, aw, bp, node] = coefficient_calc(Rext,Rint,lambda,n, ef, alpha_ext, Text, alpha_end, Twall);
+[P,R] = matrix_elements(ap,ae, aw, bp, n);
+
 
 %% Initiation
-T = zeros(n+1,1);
-
-for i =1:(n+1)
-    T(i) = Tinic;    
-end
-boolean = true;
-rep = 0;
-
-while boolean == true
-    [T, Taux] = temp_field_calc(ap,ae, aw, bp, T, n, Twall);
-    [error] = error_calc(T, Taux, n);
-    if max(error) < delta
-        boolean = false;
-    end
-    rep = rep+1;
-end
+[T] = temp_field_calc(P, R, n);
 
 figure
 plot(node, T, 'r');
