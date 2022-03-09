@@ -4,25 +4,26 @@
 
 % Physical inputs.
 % Adiabatic end is not assumed.
-
+clc
+clear; close all;
 Rint = 1;
 Rext = 2;
 ef = 0.05;
 
-lambda = 164;
+lambda = 70;
 Twall = 400;
-Text = 300;
-alpha_ext = 50; 
-alpha_end = 50;
+Text = 200;
+alpha_ext = 100; 
+alpha_end = 100;
 
 % Solver caractheristics
 
 n = 100;
 delta = 10^-6;
-Tinic = 500;
+Tinic = 700;
 
 %% Calculating coefficients ([W/K])
-[ap,ae, aw, bp] = coefficient_calc(Rext,Rint,lambda,n, ef, alpha_ext, Text, alpha_end);
+[ap,ae, aw, bp, node] = coefficient_calc(Rext,Rint,lambda,n, ef, alpha_ext, Text, alpha_end, Twall);
 
 %% Initiation
 T = zeros(n+1,1);
@@ -30,16 +31,22 @@ T = zeros(n+1,1);
 for i =1:(n+1)
     T(i) = Tinic;    
 end
-T(1) = Twall;
-boolean = 0;
-while boolean == 0
-    [T, Taux] = temp_field_calc(ap,ae, aw, bp, T, n);
+boolean = true;
+rep = 0;
+
+while boolean == true
+    [T, Taux] = temp_field_calc(ap,ae, aw, bp, T, n, Twall);
     [error] = error_calc(T, Taux, n);
     if max(error) < delta
-        boolean = 1;
+        boolean = false;
     end
+    rep = rep+1;
 end
 
-
-
+figure
+plot(node, T, 'r');
+xlabel('r [m]');
+ylabel('T [K]');
+title('Temperature along the circular fin');
+grid on
 
