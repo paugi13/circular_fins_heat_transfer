@@ -1,6 +1,9 @@
 %% Program to solve heat transfer problems in circular fins through finite difference method.
-% In this case iterations are made using the Gauss - Seidel Method. 
+% In this case iterations are made using the Tri Diagonal Matrix Algorithm.
 % The circular fin in this problem is around a circular pipe carrying some gas. 
+%The main advantage of this Algorithm is that it does not need any
+%iteration nor minimal admissible error. 
+
 
 % Physical inputs.
 % Adiabatic end is not assumed.
