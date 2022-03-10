@@ -30,10 +30,21 @@ Tinic = 700;
 %% Initiation
 [T] = temp_field_calc(P, R, n);
 
+
+%Postprocessing
+text_line = 0:0.5:Rext;
+Text_vec = zeros(size(text_line,2), 1);
+for i = 1:size(Text_vec,1)
+   Text_vec(i) = Text;
+end
 figure
 plot(node, T, 'r');
 xlabel('r [m]');
 ylabel('T [K]');
 title('Temperature along the circular fin');
 grid on
+
+hold on
+plot(text_line, Text_vec, 'black');
+hold off
 
